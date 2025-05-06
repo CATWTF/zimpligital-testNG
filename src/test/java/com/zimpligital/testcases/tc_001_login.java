@@ -24,22 +24,20 @@ public class tc_001_login {
         wavepayCapabilities.put("appium:platformVersion", "13");
         wavepayCapabilities.put("appium:deviceName", "emulator-5554");
         wavepayCapabilities.put("appium:automationName", "UiAutomator2");
-        wavepayCapabilities.put("appium:appPackage", "mm.com.wavemoney.wavepay");
-        wavepayCapabilities.put("appium:appActivity", "mm.com.wavemoney.wavepay.ui.view.MainActivity");
+        wavepayCapabilities.put("appium:appPackage", "th.co.crie.tron2.android");
+        wavepayCapabilities.put("appium:appActivity", "com.portonics.dtac.ui.home.HomeActivity");
 
         driver = commonKeywords.openApp(wavepayCapabilities);
-        Assert.assertNotNull(driver, "Failed to open Wavepay application.");
+        Assert.assertNotNull(driver, "Failed to open dtac application.");
     }
 
     @Test
-    public void testLoginWithValidCredentials() {
-        // ตอนนี้ 'driver' ถูก Initialize และแอปพลิเคชัน Wavepay เปิดอยู่แล้ว
-        // คุณสามารถเริ่มเขียน Steps การทดสอบ Login ได้เลย
-        // ตัวอย่าง:
-        // driver.findElement(By.id("phone_number_field")).sendKeys("your_phone_number");
-        // driver.findElement(By.id("password_field")).sendKeys("your_password");
-        // driver.findElement(By.id("login_button")).click();
-        System.out.println("Starting Login Test with valid credentials.");
+    public void loginTest() {
+        commonKeywords.clickAllowNotifications();
+        commonKeywords.clickSkipOnIntroPage();
+        commonKeywords.closeUpdateNotification();
+        commonKeywords.tapLoginButton();
+        commonKeywords.inputPhoneNumber("0983979923");
     }
 
     @AfterMethod
